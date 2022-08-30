@@ -1,0 +1,124 @@
+﻿@model Ecommerce.Models.Content
+@{
+    ViewBag.Title = "Adtocart";
+}
+<style>
+    .modal-header, h4, .close {
+        text-align: center;
+        font-size: 30px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 30px;
+        background-color: #fff;
+        color: #000;
+        font-family: 'a Abstract Groovy'
+    }
+
+    .modal-footer {
+        background-color: #f9f9f9;
+    }
+
+    /* Remove border and add padding to thumbnails */
+    .thumbnail {
+        padding: 0 0 15px 0;
+        border: none;
+        border-radius: 0;
+    }
+
+        .thumbnail p {
+            margin-top: 15px;
+            color: #000;
+        }
+
+    /* Black buttons with extra padding and without rounded borders */
+    .btn {
+        padding: 10px 20px;
+        background-color: #333;
+        color: #f1f1f1;
+        border-radius: 0;
+        transition: .2s;
+    }
+
+    .byy {
+        padding: 10px 20px;
+        background-color: #48f60c;
+        color: #f1f1f1;
+        border-radius: 0;
+        transition: .2s;
+    }
+
+    /* On hover, the color of .btn will transition to white with black text */
+    .btn:hover, .btn:focus {
+        border: 1px solid #333;
+        background-color: #fff;
+        color: #000;
+    }
+
+    .brew1 {
+        padding: 10px 20px;
+        background-color: #ff6a00;
+        color: white;
+        font: 40px;
+        border-radius: 0;
+        transition: .2s;
+    }
+
+    .brew2 {
+        padding: 10px 20px;
+        background-color: turquoise;
+        color: turquoise;
+        border-radius: 0;
+        transition: .2s;
+    }
+</style>
+<br />
+<br />
+<br />
+@using (@Html.BeginForm())
+{
+
+
+
+    <div class="container">
+
+        <div class="row">
+
+            <div class="col-lg-4 col-md-4 col-sm-4">
+
+                <p>  <img src="/Content/RetrieveImage/@Model.ID" alt="" height=200px width=200px border-radius="0%" /> </p>
+            
+
+            </div>
+
+
+
+            <div class="col-lg-8 col-md-8 col-sm-8">
+                <p class="brew1">
+
+                    Product Name: @Model.Title
+                </p>
+                <p>  <img src="/Content/RetrieveImage/@Model.ID" alt="" height=200 width=200 border-radius="0%" /> </p>
+
+                <p class="brew2"> Description: @Model.Description </p>
+
+                <p> Size: @Html.RadioButtonFor(modelItem => Model.size, "Small") S   @Html.RadioButtonFor(modelItem => Model.size, "Meduim") M       @Html.RadioButtonFor(modelItem => Model.size, "Large") L </p>
+
+                <p>  Colour:  @Html.RadioButtonFor(modelItem => Model.Colour, "Red") RED  @Html.RadioButtonFor(modelItem => Model.Colour, "black") Black @Html.RadioButtonFor(modelItem => Model.Colour, "white") White </p>
+                <p>
+                    <input type="number" name="qty" value="0" id="qty" />
+                </p>
+                <h2>Price:R @Model.Price each </h2>
+                <input type="submit" value="Submit" class="btn btn-default" />
+
+            </div>
+
+
+
+        </div>
+
+
+    </div>
+
+}

@@ -1,0 +1,165 @@
+﻿@model IEnumerable<Ecommerce.ViewModel.ContentViewModel>
+
+@{
+    ViewBag.Title = "Index";
+}
+<style>
+    .modal-header, h4, .close {
+        text-align: center;
+        font-size: 30px;
+    }
+
+    h1 {
+        text-align: center;
+        font-size: 30px;
+        background-color: #fff;
+        color: #000;
+        font-family: 'a Abstract Groovy'
+    }
+
+    .modal-footer {
+        background-color: #f9f9f9;
+    }
+
+    /* Remove border and add padding to thumbnails */
+    .thumbnail {
+        padding: 0 0 15px 0;
+        border: none;
+        border-radius: 0;
+    }
+
+        .thumbnail p {
+            margin-top: 15px;
+            color: #000;
+        }
+
+    /* Black buttons with extra padding and without rounded borders */
+    .btn {
+        padding: 10px 20px;
+        background-color: #333;
+        color: #f1f1f1;
+        border-radius: 0;
+        transition: .2s;
+    }
+    .btn1 {
+        padding: 10px 20px;
+        background-color: #48f60c;
+        color: #f1f1f1;
+        border-radius: 0;
+        transition: .5s;
+    }
+    .kan:active {
+        padding: 10px 20px;
+        background-color: #48f60c;
+        color: #f1f1f1;
+        border-radius: 0;
+        transition: .2s;
+    }
+
+    .byy {
+        padding: 10px 20px;
+        background-color: #48f60c;
+        color: #f1f1f1;
+        border-radius: 0;
+        transition: .2s;
+    }
+
+    /* On hover, the color of .btn will transition to white with black text */
+    .btn1:hover, .btn:focus {
+        border: 1px solid #333;
+        background-color: #fff;
+        color: #000;
+    }
+
+    .brew1 {
+        padding: 10px 20px;
+        background-color: #ff6a00;
+        color: white;
+        font: 40px;
+        border-radius: 0;
+        transition: .2s;
+    }
+
+    .brew2 {
+        padding: 10px 20px;
+        background-color: turquoise;
+        color: turquoise;
+        border-radius: 0;
+        transition: .2s;
+    }
+</style>
+
+
+<h1> Andile's merch store </h1>
+
+<p>
+    @if (TempData["total"] == null)
+    {
+
+        <h3>
+            Total Bill: R 0 
+        </h3>
+    }
+    else
+    {
+        <h3> Total Bill:R @TempData["total"] </h3>
+
+    }
+  
+      
+        @Html.ActionLink("Create New Page Content", "Create", null, new { @class = "btn btn-primary" })
+    </p>
+<div class="col-lg-2 col-md-2 col-sm-2">
+    <h3 style="color:#808080; font-family:'Arial Rounded MT';text-align:center"> <span class="btn">@Html.ActionLink("Check Out", "Checkout", "Content")</span></h3>
+</div>
+
+
+<br />
+<div class="row">
+    <div class="col-lg-10 col-md-10 col-sm-10">
+
+      
+    </div>
+
+
+    @foreach (var item in Model)
+    {
+        <div class="col-sm-4">
+            <div class="thumbnail">
+
+                <p class="brew1">
+                    <b> @Html.DisplayFor(modelItem => item.Title) </b>
+                </p>
+
+
+
+                <p>  <img src="/Content/RetrieveImage/@item.ID" alt="" height=200px width=200px border-radius="0%" /> </p>
+
+
+                <p class="brew2">
+                    @Html.DisplayFor(modelItem => item.Description)
+
+
+
+
+                <p>  Price:R @Html.DisplayFor(modelItem => item.Price) each  </p>
+
+
+
+                <p> <span class="btn1"><span class="glyphicon glyphicon-shopping-cart"> @Html.ActionLink("Add To Cart", "AddToCart", new { id = @item.ID }) </span></span> </p>
+
+
+         
+              
+                
+  </div>
+         
+        </div>
+    }
+
+
+
+
+
+
+

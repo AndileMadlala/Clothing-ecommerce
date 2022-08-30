@@ -1,0 +1,77 @@
+﻿@model Ecommerce.Models.Content
+@{
+    ViewBag.Title = "checkout";
+}
+
+<h2>checkout</h2>
+
+
+
+@if (TempData["cart"] != null)
+{
+
+
+
+    <table class="table table-responsive">
+
+
+
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Product NAME</th>
+                <th>PRICE</th>
+                <th>QUANTITY</th>
+                <th>Cost</th>
+
+
+
+
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in TempData["cart"] as List<Ecommerce.Models.Content>)
+            {
+
+                <tr>
+                    <td>@item.ID</td>
+                    <td>@item.Title</td>
+                    <td>@item.Price</td>
+                    <td>@item.Quantity</td>
+                    <td>@item.bill</td>
+                    <td>
+
+                        @Html.ActionLink("Delete", "Removeitem", new { id = item.ID })
+                    </td>
+                </tr>
+            }
+
+        </tbody>
+
+
+        <tfoot>
+            <tr>
+                <td colspan="4"></td>
+                <td>@TempData["total"]</td>
+
+            </tr>
+        </tfoot>
+
+    </table>
+    <a href="@Url.Action("MakePayment", "Payments")">
+        <span class="btn btn-success">Make Payment</span>
+    </a>
+}
+else
+{
+    <h2 style="color:red"> Cart is empty....</h2>
+    @Html.ActionLink("go Back", "Index", "Content")
+}
+
+
+
+
+
+
+
+
